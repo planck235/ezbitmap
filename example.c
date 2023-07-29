@@ -23,7 +23,7 @@ void write_bitmap(char* filepath, BITMAPFILEHEADER filehdr, BITMAPINFOHEADER inf
     }
   }
   
-  FILE *fout = fopen(filepath, "wb");
+  FILE* fout = fopen(filepath, "wb");
   fwrite(&filehdr, sizeof(filehdr), 1, fout);
   fwrite(&infohdr, sizeof(infohdr), 1, fout);
   fwrite((char*)buf, 1, infohdr.biSizeImage, fout);
@@ -31,9 +31,9 @@ void write_bitmap(char* filepath, BITMAPFILEHEADER filehdr, BITMAPINFOHEADER inf
   free(buf);
 }
 
-int main(int argc, char** argv)
+int main()
 {
-  int width = 10, height = 10, imagesize = IMAGESIZE(width, height);
+  int width = 800, height = 600, imagesize = IMAGESIZE(width, height);
 
   BITMAPFILEHEADER filehdr = create_ezbitmap_file(OFFBITS, imagesize);
   BITMAPINFOHEADER infohdr = create_ezbitmap_info(width, height, BITCOUNT, imagesize);
